@@ -11,7 +11,6 @@ Source:		%{name}-%{version}.tar.bz2
 URL:		http://gwcc.sourceforge.net/
 License:	GPL
 Group:		Graphical desktop/GNOME
-BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	pkgconfig 
 BuildRequires:  ImageMagick 
 BuildRequires:  xpm-devel 

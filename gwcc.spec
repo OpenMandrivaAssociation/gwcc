@@ -13,7 +13,7 @@ License:	GPL
 Group:		Graphical desktop/GNOME
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	pkgconfig 
-BuildRequires:  ImageMagick 
+BuildRequires:  imagemagick 
 BuildRequires:  xpm-devel 
 BuildRequires:  gtk-devel
 BuildRequires:  gnome-libs-devel

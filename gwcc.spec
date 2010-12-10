@@ -1,6 +1,6 @@
 %define name	gwcc
 %define version	0.9.8
-%define release %mkrel 5
+%define release %mkrel 6
 
 Name: 	 	%{name}
 Summary: 	Power user workstation and networking control center

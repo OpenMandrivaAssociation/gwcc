@@ -7,11 +7,10 @@ Summary: 	Power user workstation and networking control center
 Version: 	%{version}
 Release: 	%{release}
 
-Source:		%{name}-%{version}.tar.bz2
+Source0:		%{name}-%{version}.tar.bz2
 URL:		http://gwcc.sourceforge.net/
 License:	GPL
 Group:		Graphical desktop/GNOME
-BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	pkgconfig 
 BuildRequires:  imagemagick 
 BuildRequires:  xpm-devel 
@@ -37,7 +36,6 @@ cat src/prefs.c.orig >> src/prefs.c
 %make
 										
 %install
-rm -rf $RPM_BUILD_ROOT
 %makeinstall_std
 
 #menu
@@ -60,20 +58,7 @@ convert -size 32x32 pixmaps/desktop.xpm $RPM_BUILD_ROOT/%_iconsdir/%name.png
 mkdir -p $RPM_BUILD_ROOT/%_miconsdir
 convert -size 16x16 pixmaps/desktop.xpm $RPM_BUILD_ROOT/%_miconsdir/%name.png
 
-%find_lang %name
-
-%clean
-rm -rf $RPM_BUILD_ROOT
-
-%if %mdkversion < 200900
-%post
-%update_menus
-%endif
-		
-%if %mdkversion < 200900
-%postun
-%clean_menus
-%endif
+%find_lang %name || touch %{name}.lang
 
 %files -f %{name}.lang
 %defattr(-,root,root)
@@ -86,3 +71,39 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/gnome/apps/Utilities/gnomewcc.desktop
 %{_datadir}/pixmaps/%name
 
+
+
+%changelog
+* Fri Dec 10 2010 Oden Eriksson <oeriksson@mandriva.com> 0.9.8-6mdv2011.0
++ Revision: 619321
+- the mass rebuild of 2010.0 packages
+
+* Fri Sep 04 2009 Thierry Vignaud <tv@mandriva.org> 0.9.8-5mdv2010.0
++ Revision: 429349
+- rebuild
+
+  + Oden Eriksson <oeriksson@mandriva.com>
+    - lowercase ImageMagick
+
+* Thu Jul 24 2008 Thierry Vignaud <tv@mandriva.org> 0.9.8-4mdv2009.0
++ Revision: 246731
+- rebuild
+
+  + Pixel <pixel@mandriva.com>
+    - rpm filetriggers deprecates update_menus/update_scrollkeeper/update_mime_database/update_icon_cache/update_desktop_database/post_install_gconf_schemas
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+* Tue Dec 18 2007 Thierry Vignaud <tv@mandriva.org> 0.9.8-2mdv2008.1
++ Revision: 131747
+- auto-convert XDG menu entry
+- kill re-definition of %%buildroot on Pixel's request
+- import gwcc
+
+
+* Mon Oct 03 2005 Nicolas Lécureuil <neoclust@mandriva.org> 0.9.8-2mdk
+- BuildRequires fix
+
+* Mon Oct 18 2004 Austin Acton <austin@mandrake.org> 0.9.8-1mdk
+- initial package

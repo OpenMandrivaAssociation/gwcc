@@ -8,7 +8,7 @@ Version: 	%{version}
 Release: 	%{release}
 
 Source0:		%{name}-%{version}.tar.bz2
-URL:		http://gwcc.sourceforge.net/
+URL:		https://gwcc.sourceforge.net/
 License:	GPL
 Group:		Graphical desktop/GNOME
 BuildRequires:	pkgconfig 
